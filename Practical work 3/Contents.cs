@@ -14,13 +14,30 @@ namespace Practical_work_3
         private string description;
         private int age;
         private string gender;
-        private int score;
+        private float[] score = new float[2] {0,0};
         private int episodes;
-        private int date;
+        private string date;
         private string type;
         public Contents()
         {
+            for (int i = 0; i < score.Length; i++)
+            {
+                this.score[i] = 0;
+            }
+        }
 
+        public string PrintContent()
+        {
+            return ("\n\tNAME: " + this.GetName() + "\n\tPLATFORM: " + this.GetPlatform()
+                + "\n\tDESCRIPTION: " + this.GetDescription() + "\n\tAGE RATING: "
+                + this.GetAge() + "\n\tGENDER: " + this.GetGender() + "\n\tSCORE: " + this.GetScore());
+        }
+
+        public string PrintContentTxt()
+        {
+            return (this.GetName() + ";" + this.GetPlatform()
+                + ";" + this.GetDescription() + ";"
+                + this.GetAge() + ";" + this.GetGender() + ";" + this.GetScore() + ";" + this.GetScoreVotes());
         }
 
         public void SetAge(int age)
@@ -33,14 +50,21 @@ namespace Practical_work_3
             return age;
         }
 
-        public void SetScore(int score)
-        {
-            this.score = score;
+        public void SetScore(float[] score)
+        {   
+            for(int i = 0; i < score.Length; i++)
+            {
+                this.score[i] = score[i];
+            }
         }
 
-        public int GetScore()
+        public float GetScore()
         {
-            return score;
+            return score[0];
+        }
+        public float GetScoreVotes()
+        {
+            return score[1];
         }
 
         public void SetName(string name)
@@ -83,21 +107,21 @@ namespace Practical_work_3
             return gender;
         }
 
-        public abstract void SetExpiration(int date);
+        public abstract void SetExpiration(string date);
         public abstract void SetTypeCont(string type);
         public abstract void SetEpisodes(int episodes);
 
-        public abstract int GetExpiration();
+        public abstract string GetExpiration();
         public abstract string GetTypeCont();
         public abstract int GetEpisodes();
 
         public class Movie : Contents
         {
-            public override void SetExpiration(int date)
+            public override void SetExpiration(string date)
             {
                 this.date = date;
             }
-            public override int GetExpiration()
+            public override string GetExpiration()
             {
                 return date;
             }
@@ -119,6 +143,17 @@ namespace Practical_work_3
             {
                 throw new NotImplementedException();
             }
+
+
+            public string PrintMovie()
+            {
+                return (PrintContent() + "\n\tRELEASE TYPE: " + this.GetTypeCont() + "\n\tEXPIRATION DATE: " + this.GetExpiration() );
+            }
+
+            public string PrintMovieTxt()
+            {
+                return ("MOVIE;" + PrintContentTxt() + ";" + this.GetTypeCont() + ";" + this.GetExpiration());
+            }
         }
 
         public class Shows : Contents
@@ -130,11 +165,11 @@ namespace Practical_work_3
 
             }
 
-            public void SetSeason(int season)
+            public void SetSeasonShow(int season)
             {
                 this.season = season;
             }
-            public int GetSeason()
+            public int GetSeasonShow()
             {
                 return season;
             }
@@ -148,11 +183,11 @@ namespace Practical_work_3
                 return episodes;
             }
 
-            public override void SetExpiration(int date)
+            public override void SetExpiration(string date)
             {
                 throw new NotImplementedException();
             }
-            public override int GetExpiration()
+            public override string GetExpiration()
             {
                 throw new NotImplementedException();
             }
@@ -166,15 +201,25 @@ namespace Practical_work_3
                 throw new NotImplementedException();
             }
 
+            public string PrintShow()
+            {
+                return (PrintContent() + "\n\tSEASON: " + this.GetSeasonShow());
+            }
+
+            public string PrintShowTxt()
+            {
+                return ("SHOW;" + PrintContentTxt() + ";" + this.GetSeasonShow());
+            }
+
         }
 
         public class Podcast : Contents
         {
-            public override void SetExpiration(int date)
+            public override void SetExpiration(string date)
             {
                 this.date = date;
             }
-            public override int GetExpiration()
+            public override string GetExpiration()
             {
                 return date;
             }
@@ -195,6 +240,17 @@ namespace Practical_work_3
             public override int GetEpisodes()
             {
                 return episodes;
+            }
+
+
+            public string PrintPodcast()
+            {
+                return (PrintContent() + "\n\tTYPE: " + this.GetTypeCont() + "\n\tEXPIRATION DATE: " + this.GetExpiration() );
+            }
+
+            public string PrintPodcastTxt()
+            {
+                return ("PODCAST;" + PrintContentTxt() + ";" + this.GetTypeCont() + ";" + this.GetExpiration());
             }
         }
 
