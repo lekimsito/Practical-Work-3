@@ -272,7 +272,7 @@ namespace Practical_work_3
                                     Console.WriteLine("1. Movie");
                                     Console.WriteLine("2. Show");
                                     Console.WriteLine("3. Podcast");
-                                    Console.WriteLine("0. Cancel");
+                                    Console.WriteLine("0. Save");
                                     Console.WriteLine();
                                     Console.Write("Choose an option: ");
                                     menu3 = Console.ReadLine();
@@ -282,92 +282,27 @@ namespace Practical_work_3
                                         //Adding movie
                                         Console.Clear();
                                         indexlist = ListMovie.Count;
-                                        ListMovie.Add(new Contents.Movie());
                                         Console.WriteLine("\nYou are adding a new movie.\n\nIntroduce the name of the movie: ");
                                         contentinfo = Console.ReadLine();
-                                        ListMovie[indexlist].SetName(contentinfo);
-                                        Console.WriteLine("\nIntroduce the platform where it is: ");
-                                        contentinfo = Console.ReadLine();
-                                        ListMovie[indexlist].SetPlatform(contentinfo);
-                                        Console.WriteLine("\nIntroduce a description for the movie: ");
-                                        contentinfo = Console.ReadLine();
-                                        ListMovie[indexlist].SetDescription(contentinfo);
-                                        Console.WriteLine("\nIntroduce the age rating: ");
-                                        contentinfo = Console.ReadLine();
-                                        try
+
+                                        int exists = 0;
+                                        for (int i = 0; i < ListMovie.Count; i++)
                                         {
-                                            // Program body which can cause exception. 
-                                            Convert.ToInt32(contentinfo);
-                                        }
-                                        catch (Exception)
-                                        {
-                                            // error handling code
-                                            Console.WriteLine("Not a valid value");
-                                            Thread.Sleep(1000);
-                                            ListMovie.RemoveAt(indexlist);
-                                            menu3 = "0";
-                                        }
-                                        if(menu3 != "0")
-                                        {
-                                            ListMovie[indexlist].SetAge(Convert.ToInt32(contentinfo));
-                                            Console.WriteLine("\nIntroduce the gender of the movie: ");
-                                            contentinfo = Console.ReadLine();
-                                            ListMovie[indexlist].SetGender(contentinfo);
-                                            Console.WriteLine("\nIntroduce the release type (cinema / exclusive / exclusive for a time): ");
-                                            contentinfo = Console.ReadLine();
-                                            ListMovie[indexlist].SetTypeCont(contentinfo);
-                                            Console.WriteLine("\nIntroduce the DAY of expiration, example: 07 (if there is not write NO): ");
-                                            string contentinfoday = Console.ReadLine();
-                                            Console.WriteLine("\nIntroduce the MONTH of expiration, example: 07 (if there is not write NO): ");
-                                            string contentinfomonth = Console.ReadLine();
-                                            Console.WriteLine("\nIntroduce the YEAR of expiration, example: 2022 (if there is not write NO): ");
-                                            string contentinfoyear = Console.ReadLine();
-                                            if(contentinfoday.ToUpper() == "NO")
-                                            {
-                                                ListMovie[indexlist].SetExpiration("No expiration date");
-                                            }
-                                            else
-                                            ListMovie[indexlist].SetExpiration(contentinfoday + "-" + contentinfomonth + "-" + contentinfoyear);
+                                            if (ListMovie[i].GetName() == contentinfo)
+                                                exists = 1;
                                         }
 
-                                    }
-                                    else if (menu3 == "2")
-                                    {
-                                        //Adding show
-                                        Console.Clear();
-                                        indexlist = ListShows.Count;
-                                        ListShows.Add(new Contents.Shows());
-                                        Console.WriteLine("\nYou are adding a new show.\n\nIntroduce the name of the show: ");
-                                        contentinfo = Console.ReadLine();
-                                        ListShows[indexlist].SetName(contentinfo);
-                                        Console.WriteLine("\nIntroduce the platform where it is: ");
-                                        contentinfo = Console.ReadLine();
-                                        ListShows[indexlist].SetPlatform(contentinfo);
-                                        Console.WriteLine("\nIntroduce a description for the show: ");
-                                        contentinfo = Console.ReadLine();
-                                        ListShows[indexlist].SetDescription(contentinfo);
-                                        Console.WriteLine("\nIntroduce the age rating: ");
-                                        contentinfo = Console.ReadLine();
-                                        try
+                                        if(exists == 0)
                                         {
-                                            // Program body which can cause exception. 
-                                            Convert.ToInt32(contentinfo);
-                                        }
-                                        catch (Exception)
-                                        {
-                                            // error handling code
-                                            Console.WriteLine("Not a valid value");
-                                            Thread.Sleep(1000);
-                                            ListMovie.RemoveAt(indexlist);
-                                            menu3 = "0";
-                                        }
-                                        if (menu3 != "0")
-                                        {
-                                            ListShows[indexlist].SetAge(Convert.ToInt32(contentinfo));
-                                            Console.WriteLine("\nIntroduce the gender of the show: ");
+                                            ListMovie.Add(new Contents.Movie());
+                                            ListMovie[indexlist].SetName(contentinfo);
+                                            Console.WriteLine("\nIntroduce the platform where it is: ");
                                             contentinfo = Console.ReadLine();
-                                            ListShows[indexlist].SetGender(contentinfo);
-                                            Console.WriteLine("\nIntroduce the number of season you are adding: ");
+                                            ListMovie[indexlist].SetPlatform(contentinfo);
+                                            Console.WriteLine("\nIntroduce a description for the movie: ");
+                                            contentinfo = Console.ReadLine();
+                                            ListMovie[indexlist].SetDescription(contentinfo);
+                                            Console.WriteLine("\nIntroduce the age rating: ");
                                             contentinfo = Console.ReadLine();
                                             try
                                             {
@@ -384,31 +319,48 @@ namespace Practical_work_3
                                             }
                                             if (menu3 != "0")
                                             {
-                                                ListShows[indexlist].SetSeasonShow(Convert.ToInt32(contentinfo));
+                                                ListMovie[indexlist].SetAge(Convert.ToInt32(contentinfo));
+                                                Console.WriteLine("\nIntroduce the gender of the movie: ");
+                                                contentinfo = Console.ReadLine();
+                                                ListMovie[indexlist].SetGender(contentinfo);
+                                                Console.WriteLine("\nIntroduce the release type (cinema / exclusive / exclusive for a time): ");
+                                                contentinfo = Console.ReadLine();
+                                                ListMovie[indexlist].SetTypeCont(contentinfo);
+                                                Console.WriteLine("\nIntroduce the DAY of expiration, example: 07 (if there is not write NO): ");
+                                                string contentinfoday = Console.ReadLine();
+                                                Console.WriteLine("\nIntroduce the MONTH of expiration, example: 07 (if there is not write NO): ");
+                                                string contentinfomonth = Console.ReadLine();
+                                                Console.WriteLine("\nIntroduce the YEAR of expiration, example: 2022 (if there is not write NO): ");
+                                                string contentinfoyear = Console.ReadLine();
+                                                if (contentinfoday.ToUpper() == "NO")
+                                                {
+                                                    ListMovie[indexlist].SetExpiration("No expiration date");
+                                                }
+                                                else
+                                                    ListMovie[indexlist].SetExpiration(contentinfoday + "-" + contentinfomonth + "-" + contentinfoyear);
                                             }
                                         }
+                                        
+                                        else
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("Movie already exists");
+                                            Thread.Sleep(1500);
+                                        }
                                     }
-                                    else if (menu3 == "3")
+                                    else if (menu3 == "2")
                                     {
-                                        //Adding podcast
+                                        //Adding show
                                         Console.Clear();
-                                        indexlist = ListPodcast.Count;
-                                        ListPodcast.Add(new Contents.Podcast());
-                                        Console.WriteLine("\nYou are adding a new podcast.\n\nIntroduce the name of the podcast: ");
+                                        indexlist = ListShows.Count;
+                                        Console.WriteLine("\nYou are adding a new show.\n\nIntroduce the name of the show: ");
                                         contentinfo = Console.ReadLine();
-                                        ListPodcast[indexlist].SetName(contentinfo);
-                                        Console.WriteLine("\nIntroduce the platform where it is: ");
-                                        contentinfo = Console.ReadLine();
-                                        ListPodcast[indexlist].SetPlatform(contentinfo);
-                                        Console.WriteLine("\nIntroduce a description for the podcast: ");
-                                        contentinfo = Console.ReadLine();
-                                        ListPodcast[indexlist].SetDescription(contentinfo);
-                                        Console.WriteLine("\nIntroduce the age rating: ");
-                                        contentinfo = Console.ReadLine();
+                                        Console.WriteLine("\nIntroduce the number of season you are adding: ");
+                                        string contentinfo2 = Console.ReadLine();
                                         try
                                         {
                                             // Program body which can cause exception. 
-                                            Convert.ToInt32(contentinfo);
+                                            Convert.ToInt32(contentinfo2);
                                         }
                                         catch (Exception)
                                         {
@@ -420,26 +372,125 @@ namespace Practical_work_3
                                         }
                                         if (menu3 != "0")
                                         {
-                                            ListPodcast[indexlist].SetAge(Convert.ToInt32(contentinfo));
-                                            Console.WriteLine("\nIntroduce the gender of the podcast: ");
-                                            contentinfo = Console.ReadLine();
-                                            ListPodcast[indexlist].SetGender(contentinfo);
-                                            Console.WriteLine("\nIntroduce the type of podcast (video / audio): ");
-                                            contentinfo = Console.ReadLine();
-                                            ListPodcast[indexlist].SetTypeCont(contentinfo);
-                                            Console.WriteLine("\nIntroduce the DAY of expiration, example: 07 (if there is not write NO): ");
-                                            string contentinfoday = Console.ReadLine();
-                                            Console.WriteLine("\nIntroduce the MONTH of expiration, example: 07 (if there is not write NO): ");
-                                            string contentinfomonth = Console.ReadLine();
-                                            Console.WriteLine("\nIntroduce the YEAR of expiration, example: 2022 (if there is not write NO): ");
-                                            string contentinfoyear = Console.ReadLine();
-                                            if (contentinfoday.ToUpper() == "NO")
+                                            int exists = 0;
+                                            for (int i = 0; i < ListShows.Count; i++)
                                             {
-                                                ListPodcast[indexlist].SetExpiration("No expiration date");
+                                                if ((ListShows[i].GetName() == contentinfo) && (ListShows[i].GetSeasonShow() == Convert.ToInt32(contentinfo2)))
+                                                    exists = 1;
                                             }
+
+                                            if (exists == 0)
+                                            {
+                                                ListShows.Add(new Contents.Shows());
+                                                ListShows[indexlist].SetSeasonShow(Convert.ToInt32(contentinfo2));
+                                                ListShows[indexlist].SetName(contentinfo);
+                                                Console.WriteLine("\nIntroduce the platform where it is: ");
+                                                contentinfo = Console.ReadLine();
+                                                ListShows[indexlist].SetPlatform(contentinfo);
+                                                Console.WriteLine("\nIntroduce a description for the show: ");
+                                                contentinfo = Console.ReadLine();
+                                                ListShows[indexlist].SetDescription(contentinfo);
+                                                Console.WriteLine("\nIntroduce the age rating: ");
+                                                contentinfo = Console.ReadLine();
+                                                try
+                                                {
+                                                    // Program body which can cause exception. 
+                                                    Convert.ToInt32(contentinfo);
+                                                }
+                                                catch (Exception)
+                                                {
+                                                    // error handling code
+                                                    Console.WriteLine("Not a valid value");
+                                                    Thread.Sleep(1000);
+                                                    ListMovie.RemoveAt(indexlist);
+                                                    menu3 = "0";
+                                                }
+                                                if (menu3 != "0")
+                                                {
+                                                    ListShows[indexlist].SetAge(Convert.ToInt32(contentinfo));
+                                                    Console.WriteLine("\nIntroduce the gender of the show: ");
+                                                    contentinfo = Console.ReadLine();
+                                                    ListShows[indexlist].SetGender(contentinfo);
+                                                }
+                                            }
+
                                             else
-                                                ListPodcast[indexlist].SetExpiration(contentinfoday + "-" + contentinfomonth + "-" + contentinfoyear);
+                                            {
+                                                Console.Clear();
+                                                Console.WriteLine("Show already exists");
+                                                Thread.Sleep(1500);
+                                            }
                                         }
+                                        
+                                    }
+                                    else if (menu3 == "3")
+                                    {
+                                        //Adding podcast
+                                        Console.Clear();
+                                        indexlist = ListPodcast.Count;
+                                        Console.WriteLine("\nYou are adding a new podcast.\n\nIntroduce the name of the podcast: ");
+                                        contentinfo = Console.ReadLine();
+                                        int exists = 0;
+                                        for (int i = 0; i < ListPodcast.Count; i++)
+                                        {
+                                            if (ListPodcast[i].GetName() == contentinfo)
+                                                exists = 1;
+                                        }
+                                        if (exists == 0)
+                                        {
+                                            ListPodcast.Add(new Contents.Podcast());
+                                            ListPodcast[indexlist].SetName(contentinfo);
+                                            Console.WriteLine("\nIntroduce the platform where it is: ");
+                                            contentinfo = Console.ReadLine();
+                                            ListPodcast[indexlist].SetPlatform(contentinfo);
+                                            Console.WriteLine("\nIntroduce a description for the podcast: ");
+                                            contentinfo = Console.ReadLine();
+                                            ListPodcast[indexlist].SetDescription(contentinfo);
+                                            Console.WriteLine("\nIntroduce the age rating: ");
+                                            contentinfo = Console.ReadLine();
+                                            try
+                                            {
+                                                // Program body which can cause exception. 
+                                                Convert.ToInt32(contentinfo);
+                                            }
+                                            catch (Exception)
+                                            {
+                                                // error handling code
+                                                Console.WriteLine("Not a valid value");
+                                                Thread.Sleep(1000);
+                                                ListMovie.RemoveAt(indexlist);
+                                                menu3 = "0";
+                                            }
+                                            if (menu3 != "0")
+                                            {
+                                                ListPodcast[indexlist].SetAge(Convert.ToInt32(contentinfo));
+                                                Console.WriteLine("\nIntroduce the gender of the podcast: ");
+                                                contentinfo = Console.ReadLine();
+                                                ListPodcast[indexlist].SetGender(contentinfo);
+                                                Console.WriteLine("\nIntroduce the type of podcast (video / audio): ");
+                                                contentinfo = Console.ReadLine();
+                                                ListPodcast[indexlist].SetTypeCont(contentinfo);
+                                                Console.WriteLine("\nIntroduce the DAY of expiration, example: 07 (if there is not write NO): ");
+                                                string contentinfoday = Console.ReadLine();
+                                                Console.WriteLine("\nIntroduce the MONTH of expiration, example: 07 (if there is not write NO): ");
+                                                string contentinfomonth = Console.ReadLine();
+                                                Console.WriteLine("\nIntroduce the YEAR of expiration, example: 2022 (if there is not write NO): ");
+                                                string contentinfoyear = Console.ReadLine();
+                                                if (contentinfoday.ToUpper() == "NO")
+                                                {
+                                                    ListPodcast[indexlist].SetExpiration("No expiration date");
+                                                }
+                                                else
+                                                    ListPodcast[indexlist].SetExpiration(contentinfoday + "-" + contentinfomonth + "-" + contentinfoyear);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("Podcast already exists");
+                                            Thread.Sleep(1500);
+                                        }
+                                        
                                     }
                                     else if (menu3 != "0")
                                     {
@@ -737,6 +788,10 @@ namespace Practical_work_3
                             else if (menu2 == "5")
                             {
                                 //Showing content ranking (Top 10)
+
+
+
+
 
                             }
                             else if (menu2 == "6")
