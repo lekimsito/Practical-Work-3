@@ -1,0 +1,16 @@
+MOVIE;End Game;Netflix;Marvel herous fight vs Thanos to save the world;7;Fiction;9,5;10;Cinema;04-09-2021
+MOVIE;LOL;Netflix;LOLOLOLOLOLOLOL;18;Fiction;0;0;Cinema;04-02-2024
+SHOW;Star Wars;Netflix;Travel through the space and fight with lasers;7;Fiction;4;1;1
+EPISODES;Star Wars;1;Titulo1Season1;49
+EPISODES;Star Wars;1;Titulo2Season1;53
+EPISODES;Star Wars;1;Titulo3Season1;42
+SHOW;Star Wars;Netflix;Travel through the space and fight with lasers;7;Fiction;4;1;2
+EPISODES;Star Wars;2;Titulo1Season2;46
+EPISODES;Star Wars;2;Titulo2Season2;55
+EPISODES;Star Wars;2;Titulo3Season2;47
+SHOW;Juas Juas;HBO;Bla bla bla bla bla bla bla;5;Comedy;0;0;1
+PODCAST;Star Wars;Netflix;Travel through the space and fight with lasers;7;Fiction;5;2;Video;03-12-2023
+EPISODES;Star Wars;Titulo1;49
+EPISODES;Star Wars;Titulo2;53
+EPISODES;Star Wars;Titulo3;42
+PODCAST;Wow;Disney+;Bla bla bla bla;5;Fiction;0;0;Video;01-08-2023

@@ -1,0 +1,8 @@
+C:\Users\lekim\source\repos\Practical work 3\obj\Debug\Practical work 3.csproj.SuggestedBindingRedirects.cache
+C:\Users\lekim\source\repos\Practical work 3\obj\Debug\Practical work 3.csproj.CoreCompileInputs.cache
+C:\Users\lekim\source\repos\Practical work 3\bin\Debug\Practical work 3.exe.config
+C:\Users\lekim\source\repos\Practical work 3\bin\Debug\Practical work 3.exe
+C:\Users\lekim\source\repos\Practical work 3\bin\Debug\Practical work 3.pdb
+C:\Users\lekim\source\repos\Practical work 3\obj\Debug\Practical work 3.csproj.AssemblyReference.cache
+C:\Users\lekim\source\repos\Practical work 3\obj\Debug\Practical work 3.exe
+C:\Users\lekim\source\repos\Practical work 3\obj\Debug\Practical work 3.pdb
